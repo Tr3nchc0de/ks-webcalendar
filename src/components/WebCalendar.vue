@@ -2,11 +2,14 @@
 <template>
   <div class="hello">
     <h1>Calendar</h1>
-
     <!-- <button v-on:click="getWeatherData">Get Weather Data</button> -->
     <!-- <div>{{weatherDataList}}</div> -->
    <div v-for="calendarData in calendarDataList" :key="calendarData" class="calendar-data">
-      {{Pager}}
+     <div class="calendar-card">
+       {{calendarDataList["EventOverview"][0]["ContentCategory"]}}
+     </div>
+     {{calendarDataList["EventOverview"][0]["DateTime"]}}
+      {{calendarDataList["EventOverview"][0]["City"]}}
     </div>
   </div>
 </template>
@@ -17,8 +20,7 @@ export default {
   data() {
     return {
       calendarDataList: [],
-      EventOverview: [],
-      Pager: []
+      EventOverview: []
     };
   },
   methods: {  
@@ -38,6 +40,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+body {margin:0px !important}
+.calendar-data {
+  background:#efefef;
+  margin: 20px 0;
+}
 h3 {
   margin: 40px 0 0;
 }
